@@ -1,0 +1,6 @@
+Flask[async]>=3.0
+beautifulsoup4>=4.12
+requests>=2.31
+aiohttp>=3.9
+xhtml2pdf>=0.2.10
+gunicorn>=21.2
