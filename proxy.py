@@ -504,13 +504,13 @@ def get_config():
     # 部分代理（如 Render）会使用以逗号分隔的多值，取第一个值即可
     scheme = forwarded_proto.split(',')[0].strip() or 'http'
     host = request.headers.get("Host", request.host)
-    text = """(function (window) {
-      window.$config = {
+    text = """(function (window) {{
+      window.$config = {{
         BASE_API: "{scheme}://{host}",
         photoType: 2, //  0 只能拍照，1 只能选择相册，2 两者可以
         // BASE_API: "https://bdfz.xnykcxt.com:5002",
-      };
-    })(window);
+      }};
+    }})(window);
     """.format(scheme=scheme, host=host)
     response = Response(text, 200, {'Content-Type': 'application/javascript'})
     return response
